@@ -5,27 +5,34 @@ import Register from "./pages/Register";
 import Protected from "./components/routing/Protected";
 import { Usercontextprovider } from "./components/context/userContext";
 import { Navcontextprovider } from "./components/context/navcontext";
-
+import Graficos from "./pages/Graficos";
+import Sensores from "./pages/sensores";
+import Datos from "./pages/datos";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      <Usercontextprovider>
-      <Navcontextprovider>   
-        <Routes>
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route
-            path="/"
-            element={
-              <Protected>
-                <Nav />
-              </Protected>
-            }
-          ></Route>
-        </Routes>
-        </Navcontextprovider>
+        <Usercontextprovider>
+          <Navcontextprovider>
+            <Routes>
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route
+                path="/"
+                element={
+                  <Protected>
+                    <Nav />
+                  </Protected>
+                }
+              >
+                <Route path="/graficos" element={<Graficos />} />
+                <Route path="/sensores" element={<Sensores />} />
+                <Route path="/datos" element={<Datos />} />
+                
+              </Route>
+            </Routes>
+          </Navcontextprovider>
         </Usercontextprovider>
       </BrowserRouter>
     </>
