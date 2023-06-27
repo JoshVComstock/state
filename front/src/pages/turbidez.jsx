@@ -1,49 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { RadialBarChart, RadialBar, Legend, Tooltip, ResponsiveContainer } from "recharts";
+import React from "react";
+import { useEffect, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-const SensorChart = () => {
-  const [sensorData, setSensorData] = useState([]);
+const DegreeChart = () => {
+    const [sensorData, setSensorData] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://127.0.0.1:8000/api/turbidez");
-        const data = await response.json();
-        setSensorData(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("http://127.0.0.1:8000/api/turbide");
+                const data = await response.json();
+                setSensorData(data);
+                console.log(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
-  return (
-    <ResponsiveContainer width="100%" height={400}>
-      <RadialBarChart
-        cx="50%"
-        cy="50%"
-        innerRadius="10%"
-        outerRadius="80%"
-        barSize={20}
-        data={sensorData}
-        startAngle={180}
-        endAngle={0}
-      >
-        <RadialBar
-          background
-          clockWise
-          dataKey="nivel_turbidez"
-          fill="#0088FE"
-          cornerRadius={10}
-          label={{ position: "insideStart", fill: "#fff", fontSize: "14px" }}
-          minAngle={-180}
-          maxAngle={0}
-        />
-        <Tooltip formatter={(value) => `${value}%`} />
-        <Legend iconSize={10} layout="vertical" verticalAlign="middle" align="right" />
-      </RadialBarChart>
-    </ResponsiveContainer>
-  );
+        fetchData();
+    }, []);
+
+    return (
+        <>
+            <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={sensorData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="degree" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="nivel_turbidez" fill="#8884d8" />
+                </BarChart>
+            </ResponsiveContainer>
+        </>
+    );
 };
 
-export default SensorChart;
+export default DegreeChart;

@@ -12,6 +12,7 @@ import Graficos from "./pages/Graficos";
 function App() {
   return (
     <>
+    
       <BrowserRouter>
         <Usercontextprovider>
           <Navcontextprovider>

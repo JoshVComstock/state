@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\turbidez;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class turbidezController extends Controller
 {
@@ -15,6 +16,10 @@ class turbidezController extends Controller
     public function index()
     {
         return turbidez::all();
+    }
+    public function mostrarnivel()
+    {
+        return DB::select("select nivel_turbidez from turbidezs");
     }
 
     /**

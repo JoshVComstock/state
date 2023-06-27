@@ -27,6 +27,8 @@ Route::post('/dhtd', [dhtsController::class, 'store']);
 Route::delete('/dhtd/{id}', [dhtsController::class, 'destroy']);
 
 Route::get('/turbidez', [turbidezController::class, 'index']);
+Route::get('/turbide', [turbidezController::class, 'mostrarnivel']);
+
 Route::post('/turbidez', [turbidezController::class, 'store']);
 Route::delete('/turbidez/{id}', [turbidezController::class, 'destroy']);
 
