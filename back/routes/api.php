@@ -31,4 +31,4 @@ Route::delete('/turbidez/{id}', [turbidezController::class, 'destroy']);
 
 Route::post('registeruser', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
-Route::get('registeruser', [UserController::class, 'Userregister']);
+Route::get('registeruserget', [UserController::class, 'getfuncion']);

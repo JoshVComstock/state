@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function getfuncion()
+    {
+        return User::all();
+    }
+
     public function register(Request $request)
     {
         $request->validate([
@@ -19,15 +24,15 @@ class UserController extends Controller
             'apellido' => 'required',
             'rol' => 'required'
         ]);
+     
 
-        $User = new user();
-        $User->usuario = $request->usuario;
-        $User->rol = $request->rol;
-        $User->nombre = $request->nombre;
-        $User->apellido  = $request->apellido;
-
-        $User->password = Hash::make($request->password);
-        $User->save();
+        $users = new User();
+        $users->usuario = $request->usuario;
+        $users->rol = $request->rol;
+        $users->nombre = $request->nombre;
+        $users->apellido  = $request->apellido;
+        $users->password = Hash::make($request->password);
+        $users->save();
         return response()->json([
             "status" => 1,
             "msg" => "Registro exitoso",
