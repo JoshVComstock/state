@@ -1,14 +1,11 @@
 import React from "react";
-
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
 import NavPersonas from "./ControlRoles/NavPersonas";
 import NavAdmin from "./ControlRoles/NavAdmin";
 import { useNavContext } from "./context/navcontext";
 import { useuserContext } from "./context/userContext";
 import Login from "../pages/Login";
-
 const Nav = () => {
   const { logged } = useNavContext;
   const navegation = useNavigate();
@@ -22,7 +19,6 @@ const Nav = () => {
     localStorage.removeItem("user");
     navegation("/login");
   };
-
   return (
     <Section>
       <nav>
@@ -36,7 +32,6 @@ const Nav = () => {
     </Section>
   );
 };
-
 export default Nav;
 const Section = styled.div`
 display:flex;
