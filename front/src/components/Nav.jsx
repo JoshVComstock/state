@@ -25,7 +25,9 @@ const Nav = () => {
         {user.rol == "administrador" && <NavAdmin />}
         {user.rol == "personas" && <NavPersonas />}
       </nav>
+        <aside>
         <Outlet />
+        </aside>
     </Section>
   );
 };
@@ -34,12 +36,20 @@ const Section = styled.div`
 display:flex;
 width:100vw;
 height:100vh;
+flex-direction:column;
+background-image: linear-gradient(rgb(89, 172, 231) 50%, #fff 50%);
+
 & nav{
-  width:20em;
-  background-color:#0002;
+  width:100%;
+  height:8vh;
+  background-color:transparent;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 & aside{
-  width:calc(100% - 20em);
-background-color:blue;
+  width:100vw;
+background-color:transparent;
+height:100vh;
 }
 `;

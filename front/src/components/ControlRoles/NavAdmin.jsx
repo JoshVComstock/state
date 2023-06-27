@@ -2,90 +2,81 @@ import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../assets/react.svg";
+import { useNavContext } from "../context/navcontext";
+import { useuserContext } from "../context/userContext";
 
 const NavAdmin = () => {
-  const navigate = useNavigate();
-
-  const handleNavigation = (path) => {
-    navigate(path);
+  const { logged } = useNavContext;
+  const navegation = useNavigate();
+  const { user, setUser } = useuserContext();
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+  const Cerrasesion = async () => {
+    localStorage.removeItem("user");
+    navegation("/login");
   };
 
-  const navLinks = [
-    { to: "/graficos", label: "Grafico" },
-    { to: "/sensores", label: "Sensores" },
-    { to: "/datos", label: "Datos" },
-    { to: "/informacion", label: "Informacion" },
-    { to: "/mapas", label: "Mapas" },
-  ];
-
   return (
-    <NavbarContainer>
-      <NavbarLogo to="/" onClick={() => handleNavigation("/")}>
-        <LogoImage src={logo} alt="Logo" />
-        <LogoText>Niveles</LogoText>
-      </NavbarLogo>
-      <NavbarLinks>
-        {navLinks.map((link) => (
-          <NavbarLink
-            key={link.to}
-            to={link.to}
-            onClick={() => handleNavigation(link.to)}
-          >
-            {link.label}
-          </NavbarLink>
-        ))}
-      </NavbarLinks>
-      <Outlet />
-    </NavbarContainer>
+    <Nav>
+      <Links to="/">Home</Links>
+      <Links to="/graficos">Graficos</Links>
+
+      <Links to="/sensores">Sensores</Links>
+      <Links to="/datos">Datos</Links>
+      <Links to="/informacion">Informacion</Links>
+      <Links to="/mapas">Mapas</Links>
+      <button onClick={Cerrasesion}>Salir</button>
+    </Nav>
+    
   );
 };
 
 export default NavAdmin;
 
-const NavbarContainer = styled.div`
-  width: 100%;
-  background-color: #f8f9fa;
+const Nav = styled.div`
+  width: 100vw;
+  margin:0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  gap:0.2em;
+  border-bottom:solid 1px #fff;
+  & button{
+    text-decoration: none;
+  display: flex;
+  align-items: center;
+  height:7vh;
+  transition:all .2s ease-in-out;
+  padding:0 4em;
+  color:#fff;
+  background-color:transparent;
+  border:none;
+  border-left:solid .5px #fff;
+  border-right:solid .5px #fff;
+  &:hover{
+    background-color:#fff;
+    color:rgb(89, 172, 231) ;
+    transform:translateY(1em);
+  }
+  }
+;
 `;
 
-const NavbarLogo = styled(Link)`
+const Links = styled(Link)`
   text-decoration: none;
   display: flex;
   align-items: center;
-`;
-
-const LogoImage = styled.img`
-  width: 40px;
-  height: 40px;
-`;
-
-const LogoText = styled.span`
-  color: #212529;
-  font-size: 20px;
-  font-weight: bold;
-  margin-left: 10px;
-`;
-
-const NavbarLinks = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const NavbarLink = styled(Link)`
-  text-decoration: none;
-  color: #212529;
-  font-size: 16px;
-  font-weight: 500;
-  margin: 0 10px;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #adb5bd;
-    color: #fff;
+  height:7vh;
+  transition:all .2s ease-in-out;
+  padding:0 2em;
+  color:#fff;
+  
+  &:hover{
+    background-color:#fff;
+    color:rgb(89, 172, 231) ;
+    transform:translateY(1em);
   }
 `;

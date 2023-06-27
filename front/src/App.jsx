@@ -5,9 +5,9 @@ import Register from "./pages/Register";
 import Protected from "./components/routing/Protected";
 import { Usercontextprovider } from "./components/context/userContext";
 import { Navcontextprovider } from "./components/context/navcontext";
-import Graficos from "./pages/Graficos";
 import Sensores from "./pages/sensores";
 import Datos from "./pages/datos";
+import Graficos from "./pages/Graficos";
 
 function App() {
   return (
@@ -29,7 +29,6 @@ function App() {
                 <Route path="/graficos" element={<Graficos />} />
                 <Route path="/sensores" element={<Sensores />} />
                 <Route path="/datos" element={<Datos />} />
-                
               </Route>
             </Routes>
           </Navcontextprovider>

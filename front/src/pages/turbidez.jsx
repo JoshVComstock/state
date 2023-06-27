@@ -14,7 +14,6 @@ const SensorChart = () => {
         console.log(error);
       }
     };
-
     fetchData();
   }, []);
 
