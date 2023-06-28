@@ -12,7 +12,8 @@ import Datos from "./pages/datos";
 function App() {
   return (
     <>
-      <BrowserRouter>
+    <Graficos/>
+      {/* <BrowserRouter>
         <Usercontextprovider>
           <Navcontextprovider>
             <Routes>
@@ -34,7 +35,7 @@ function App() {
             </Routes>
           </Navcontextprovider>
         </Usercontextprovider>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </>
   );
 }
