@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const TableContainer = styled.div`
-  width: 50%;
-  background: #fff;
+  width: 85%;
+  background: transparent;
   display: grid;
   place-items: center;
 `;

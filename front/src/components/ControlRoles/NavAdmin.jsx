@@ -22,9 +22,8 @@ const NavAdmin = () => {
   return (
     <Nav>
       <Links to="/">Home</Links>
-      <Links to="/graficos">Graficos</Links>
-
-      <Links to="/sensores">Sensores</Links>
+      <Links to="/graficos">Sensor Dht</Links>
+      <Links to="/sensores">Sensor de turvivez</Links>
       <Links to="/datos">Datos</Links>
       <Links to="/informacion">Informacion</Links>
       <Links to="/mapas">Mapas</Links>

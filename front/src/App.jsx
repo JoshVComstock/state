@@ -8,6 +8,8 @@ import { Navcontextprovider } from "./components/context/navcontext";
 import Sensores from "./pages/sensores";
 import Datos from "./pages/datos";
 import Graficos from "./pages/Graficos";
+import Mapas from "./pages/Mapas";
+import Informacion from "./pages/Informacion";
 
 function App() {
   return (
@@ -30,6 +32,9 @@ function App() {
                 <Route path="/graficos" element={<Graficos />} />
                 <Route path="/sensores" element={<Sensores />} />
                 <Route path="/datos" element={<Datos />} />
+                <Route path="/mapas" element={<Mapas />} />
+                <Route path="/informacion" element={<Informacion />} />
+                
               </Route>
             </Routes>
           </Navcontextprovider>
