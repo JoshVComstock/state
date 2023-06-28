@@ -29,10 +29,7 @@ const Nav = () => {
         {user.rol == "administrador" && <NavAdmin />}
         {user.rol == "personas" && <NavPersonas />}
       </nav>
-      <aside>
-        <article>barra nav arriba</article>
         <Outlet />
-      </aside>
     </Section>
   );
 };
