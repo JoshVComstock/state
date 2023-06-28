@@ -1,24 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Navbar from './components/navbar'
-import { BrowserRouter, Route, Router,Routes } from 'react-router-dom'
-import Graficos from './pages/Graficos'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Nav from "./components/Nav";
+import Register from "./pages/Register";
+import Protected from "./components/routing/Protected";
+import { Usercontextprovider } from "./components/context/userContext";
+import { Navcontextprovider } from "./components/context/navcontext";
 
 
 function App() {
-
-
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+      <Usercontextprovider>
+      <Navcontextprovider>   
         <Routes>
-          <Route path='/graficos' element={<Graficos />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route
+            path="/"
+            element={
+              <Protected>
+                <Nav />
+              </Protected>
+            }
+          ></Route>
         </Routes>
+        </Navcontextprovider>
+        </Usercontextprovider>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
