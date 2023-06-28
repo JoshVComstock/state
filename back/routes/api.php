@@ -5,6 +5,7 @@ use App\Http\Controllers\turbidezController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Reportescontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,7 @@ Route::delete('/turbidez/{id}', [turbidezController::class, 'destroy']);
 Route::post('registeruser', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('registeruserget', [UserController::class, 'getfuncion']);
+
+//Reportes
+Route::get('report1-pdf', [Reportescontroller::class, 'generatepdfturbidez']);
+Route::get('report2-pdf', [Reportescontroller::class, 'generatepdfDht']);
