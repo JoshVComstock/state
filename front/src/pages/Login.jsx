@@ -137,7 +137,7 @@ const Article = styled.article`
   & > section {
     background-color: #103f6e;
     width: 20em;
-    height: 30em;
+    height: 33em;
     position:relative;
   box-shadow: 0 2px 10px #103f6e;
 

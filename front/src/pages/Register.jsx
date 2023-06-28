@@ -227,10 +227,13 @@ const Article = styled.article`
       /* border: solid 1px #103f6eab; */
       border: none;
       border-bottom: solid 1px#103f6e;
-
       height: 2.5em;
       outline: none;
       /* border-radius:.5em; */
+      & option{
+        background-color:transparent;
+      border:none;
+      }
     }
     & button {
       width: 60%;
